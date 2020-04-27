@@ -1,0 +1,29 @@
+{
+  "name": "political_hierarchy_generator",
+  "version": "1.0.0",
+  "description": "## A 301 Project for Code Fellows",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeFellows301d61Project/political_hierarchy_generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeFellows301d61Project/political_hierarchy_generator/issues"
+  },
+  "homepage": "https://github.com/CodeFellows301d61Project/political_hierarchy_generator#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "pg": "^8.0.3",
+    "superagent": "^5.2.2"
+  }
+}
