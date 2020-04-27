@@ -62,6 +62,6 @@ function generateName() {
   determineCulture();
   let url =`http://api.name-fake.com/${culture}/${gender}`;
 
-superagent(url)
+  superagent(url);
 
 }

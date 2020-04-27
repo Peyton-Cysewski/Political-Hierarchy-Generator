@@ -7,9 +7,9 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 
-DROP TABLE IF EXISTS users_data;
+DROP TABLE IF EXISTS hierarchy;
 
-CREATE TABLE IF NOT EXISTS users_data (
+CREATE TABLE IF NOT EXISTS hierarchy (
   id SERIAL PRIMARY KEY,
   user_name VARCHAR(255),
   user_data ???  VARCHAR(255)
