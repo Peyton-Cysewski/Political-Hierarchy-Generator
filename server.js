@@ -1,5 +1,6 @@
 'use strict';
 
+
 // DEPENDENCIES
 require('dotenv').config();
 const express = require('express');
@@ -8,11 +9,17 @@ const superagent = require('superagent');
 const ejs = require('ejs');
 const methodOverride = require('method-override');
 const pg = require('pg');
+const cors = require('cors');
 const PORT = process.env.PORT;
+
 
 // DEPENDENCY INTEGRATION
 app.set('view engine', 'ejs');
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 const dbClient = new pg.Client(process.env.DATABASE_URL);
+
 
 // DATABASE CONNECTION
 dbClient.connect(error => {
@@ -24,8 +31,10 @@ dbClient.connect(error => {
   }
 });
 
+
 // JS MODULES
 // imports go here...
+
 
 // ALL ROUTES + CALLBACKS
 // **NOTE** - Callbacks need to be defined in module directories and imported directly above this section.
@@ -37,7 +46,7 @@ app.get('/login', renderLoginPage);                     // TODO // - displays th
 app.get('/createAccount', renderNewAccount);            // TODO // - displays a similar form to the login page; (Stretch: as the user puts in their username, checks database and denies it if it has already been taken, case sensitive).
 app.get('/saved', renderSavedHierarchies);              // TODO // - displays a list of all the save-names of the hierarchies that user has ever created; (Stretch: can sort by name or by hidden id).
 app.get('/paginatedSaved', renderPaginatedHierarchies); // TODO // - displays a hierarchy in the same format that the 'renderHierarchy' function shows, but with paging buttons that paginate through the list from the previous view.
-// Stretch
+// stretch goals
 // app.get('/accountSettings', renderAccountSettings);  // TODO //
 // app.get('/about', renderAboutPage);                  // TODO //
 
@@ -48,9 +57,8 @@ app.post('/login', login);                              // TODO // - logs the us
 // PUT
 app.put('/createAccount', saveUser);                    // TODO // - sends login data to be saved to database 'project' in table 'users'. 
 app.put('/save', saveHierarchy);                        // TODO // - saves the proper hierarchy metadata to the database 'project' in tables 'politics' and 'hierarchy'.
-// Stretch
+// stretch goals
 // app.put('/updateUser', updateUser)                   // TODO //
-
 
 
 
