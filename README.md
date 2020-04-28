@@ -18,10 +18,10 @@ This is a project to create make a website for creative writers, world builders 
 ![chart](/asset/img/Hierarchy_Generator.png)
 
 ### Home Page
-![home_page](/asset/img/homePage.png)
+![home_page](/asset/img/home.png)
 
 ### Result Page (Org-Chart)
-![result_page](/asset/img/result.png)
+![result_page](/asset/img/results.png)
 
 ## API's
 - [API for Saving Files to local machine](https://www.w3.org/TR/FileAPI/)
