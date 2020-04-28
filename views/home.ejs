@@ -4,7 +4,26 @@
 <body>
   <%- include('layout/header') %>
   <main>
-    
+    <form action='/heirarchy?_method=PUT' method='POST'>
+    <form action="/">
+      <fieldset>
+        <legend>Selecting elements</legend>
+
+        <%- include('layout/cultureform') %>
+
+        <%- include('layout/genderform') %>
+
+           <label>Goverment</label>
+           <select id = "goverment">
+            <option value="" disabled>Choose the Structure of Your Political Hierarchy</option>
+           </select>
+
+
+
+     </fieldset>
+
+
+    </form>
   </main> 
   <%- include('../layout/footer') %>
 </body>

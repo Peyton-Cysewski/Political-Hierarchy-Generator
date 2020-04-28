@@ -13,13 +13,21 @@ DROP TABLE IF EXISTS politics;
 CREATE TABLE IF NOT EXISTS politics (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users (id),
-  government VARCHAR(255), 
-  government_description VARCHAR(1000), 
+  government VARCHAR(255),
+  ruler_male_title VARCHAR(255),
+  ruler_female_title VARCHAR(255),
+  government_description VARCHAR(1000),
   tier1 VARCHAR(255), 
+  tier1_male_title VARCHAR(255),
+  tier1_female_title VARCHAR(255),
   tier1_description VARCHAR(1000),
-  tier2 VARCHAR(255), 
+  tier2 VARCHAR(255),
+  tier2_male_title VARCHAR(255),
+  tier2_female_title VARCHAR(255),
   tier2_description VARCHAR(1000),
   tier3 VARCHAR(255), 
+  tier3_male_title VARCHAR(255),
+  tier3_female_title VARCHAR(255),
   tier3_description VARCHAR(1000)
 );
 
@@ -29,7 +37,7 @@ DROP TABLE IF EXISTS hierarchy;
 CREATE TABLE IF NOT EXISTS hierarchy (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users (id),
-  politics_id INTEGER REFERENCES politics (id),
+  -- politics_id INTEGER REFERENCES politics (id),
   tier_number_array INTEGER[3],
   tier_name_array TEXT[]
 );
