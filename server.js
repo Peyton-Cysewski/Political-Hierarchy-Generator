@@ -35,7 +35,7 @@ app.use(express.static('public'));
 // JS MODULES
 const renderHomePage = require('./js_server_modules/get/renderHomePage.js');
 // const createHierarchy = require('./js_server_modules/post/createHierarchy.js');
-
+console.log(renderHomePage);
 
 // ALL ROUTES + CALLBACKS
 // **NOTE** - Callbacks need to be defined in module directories and imported directly above this section.

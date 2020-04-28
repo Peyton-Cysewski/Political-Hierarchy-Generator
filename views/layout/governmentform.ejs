@@ -1,5 +1,8 @@
 <label>Goverment</label>
-<select id = "goverment">
+<select name = "government">
  <option value="" disabled>Choose the Structure of Your Political Hierarchy</option>
+ <% availableGovernments.forEach( item => { %>
+   <option value="<%= item.id %>" > <%= item.government %> </option>
 
+ <% }) %>
 </select>
