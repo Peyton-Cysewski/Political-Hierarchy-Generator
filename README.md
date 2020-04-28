@@ -18,7 +18,7 @@ This is a project to create make a website for creative writers, world builders 
 ![chart](/asset/img/Hierarchy_Generator.png)
 
 ### Home Page
-![home_page](/asset/img/home.png)
+![home_page](/asset/img/home_page.png)
 
 ### Result Page (Org-Chart)
 ![result_page](/asset/img/results.png)
