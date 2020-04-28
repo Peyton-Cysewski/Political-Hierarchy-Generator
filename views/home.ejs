@@ -2,10 +2,9 @@
 <html lang="en">
 <%- include('layout/head') %>
 <body>
-  <%- include('layout/header') %>
+  <%- include('layout/loggedOutHeader') %>
   <main>
-    <form action='/heirarchy?_method=PUT' method='POST'>
-    <form action="/">
+    <form action='/input' method='POST'>
       <fieldset>
         <legend>Selecting elements</legend>
 
@@ -16,6 +15,10 @@
            <label>Goverment</label>
            <select id = "goverment">
             <option value="" disabled>Choose the Structure of Your Political Hierarchy</option>
+            <% availableGovernments.forEach( government => { %>
+              <option value="<%= government.government %>" > <%= government.government %> </option>
+
+            <% }) %>
            </select>
 
 
@@ -25,6 +28,6 @@
 
     </form>
   </main> 
-  <%- include('../layout/footer') %>
+  <%- include('layout/footer') %>
 </body>
 </html>
