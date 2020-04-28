@@ -1,5 +1,4 @@
-INSERT INTO politics (user_id, government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
-  0,
+INSERT INTO politics (government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
   'Kingdom',
   'A land ruled by a King or Queen',
   'Duchy',
@@ -10,8 +9,7 @@ INSERT INTO politics (user_id, government, government_description, tier1, tier1_
   'A land ruled by a Count or Countess'
 );
 
-INSERT INTO politics (user_id, government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
-  0,
+INSERT INTO politics (government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
   'Empire',
   'A land ruled by an Emperor or Empress',
   'Bakufu',
@@ -22,8 +20,7 @@ INSERT INTO politics (user_id, government, government_description, tier1, tier1_
   'Land used to produce the income of a Samurai'
 );
 
-INSERT INTO politics (user_id, government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
-  0,
+INSERT INTO politics (government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
   'Republic',
   'A nation governed by a Dictator accountable to their underlings',
   'Council Chairman',
@@ -34,8 +31,7 @@ INSERT INTO politics (user_id, government, government_description, tier1, tier1_
   'A position within the Senate representing the common people of a province to their leadership'
 );
 
-INSERT INTO politics (user_id, government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
-  0,
+INSERT INTO politics (government, government_description, tier1, tier1_description, tier2, tier2_description, tier3, tier3_description) VALUES (
   'People',
   'A related group of people united by their heritage',
   'Tribe',
@@ -49,11 +45,9 @@ INSERT INTO politics (user_id, government, government_description, tier1, tier1_
 INSERT INTO users (user_name, user_password) VALUES ('Test User','Test Password');
 
 
-INSERT INTO hierarchy (user_id, politics_id, tier_number_array,
+INSERT INTO hierarchy (tier_number_array,
   tier_name_array) 
   VALUES (
-    0,
-    1,
     ARRAY[1,1,1],
     ARRAY['Joe Smoe','John Doe','Jane Doe','Mary Sue']
 );
