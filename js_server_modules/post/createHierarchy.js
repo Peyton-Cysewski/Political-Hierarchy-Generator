@@ -1,6 +1,7 @@
 'use strict';
 
 // DEPENDENCIES
+require('dotenv').config();
 const superagent = require('superagent');
 const pg = require('pg');
 const dbClient = new pg.Client(process.env.DATABASE_URL);
@@ -43,29 +44,13 @@ function determineCulture(request) {
   return culture;
 }
 
-// function nameGenerator(request, response) {
-//   let gender = determineGender(request);
-//   const culture = determineCulture(request);
-//   const url =`http://api.name-fake.com/${culture}/${gender}`;
-
-//   superagent(url).then(result => {
-//     let randomName = result.name;
-//     let person = {
-//       name: randomName,
-//       sex: gender
-//     };
-//     return person;
-//   }).catch(error => {
-//     errorHandler(error, request, response);
-//   });
-// }
 
 function Person(role, maleTitle, femaleTitle, description, person) {
-  this.title = role;
+  this.role = role;
   if (person.sex === 'male') {
-    this.name = maleTitle + person.name;
+    this.title = maleTitle + ' ' +person.name;
   } else if (person.sex === 'female') {
-    this.name = femaleTitle + person.name;
+    this.title = femaleTitle + ' ' + person.name;
   }
   this.description = description;
 }
@@ -73,24 +58,29 @@ function Person(role, maleTitle, femaleTitle, description, person) {
 
 // MAIN IMPORTANT FUNCTION
 exports.createHierarchy = function(request, response) {
-  let tier1Number = request.body.tier1;
-  let tier2Number = request.body.tier2;
-  let tier3Number = request.body.tier3;
+  // console.log(request.body);
+  let tier1Number = parseInt(request.body.tier1);
+  let tier2Number = parseInt(request.body.tier2);
+  let tier3Number = parseInt(request.body.tier3);
   let declaredGovernment = request.body.government;
   let totalNumberOfPeople = 1 + tier1Number + (tier1Number * tier2Number) + (tier1Number * tier2Number * tier3Number);
+  
+  // console.log(declaredGovernment);
 
-  // let personArray = [];
+  let promises = [];
   // let govData;
   
-  for (let i = 0; totalNumberOfPeople < totalNumberOfPeople; i++) {
-    let gender = determineGender(response); //(request);
-    const culture = determineCulture(response);//(request);
+  for (let i = 0; i < totalNumberOfPeople; i++) {
+    let gender = determineGender(request); //(request);
+    const culture = determineCulture(request);//(request);
     const url =`https://api.namefake.com/${culture}/${gender}`;
-    nameArray.push(superagent.get(url));
+    promises.push(superagent.get(url));
   }
-
+  // console.log(promises);
+  
   Promise.all(promises)
   .then(people => {
+    // console.log(people);
     // console.log(people.map(person => JSON.parse(person.text).name));
     return people.map(person => {
       let name = JSON.parse(person.text).name;
@@ -101,10 +91,12 @@ exports.createHierarchy = function(request, response) {
       }
     });
   }).then(nameArray => {
+    // console.log(nameArray);
     let selectQuery = `SELECT * FROM politics WHERE government=$1;`;
     let selectValues = [declaredGovernment];
     dbClient.query(selectQuery, selectValues).then(dbRes => {
-      let govData = dbRes.rows;
+      // console.log(dbRes.rows[0]);
+      let govData = dbRes.rows[0];
       
       let ruler = [];
       ruler.push(new Person(govData.government, govData.ruler_male_title, govData.ruler_female_title, govData.government_description, nameArray[0]));
@@ -125,8 +117,9 @@ exports.createHierarchy = function(request, response) {
       }
       // RENDER HERE
       // return ruler;
-      console.log(ruler);
-      response.render('result', ruler);
+      // console.log(ruler);
+      response.send(ruler);
+      // response.render('result', ruler);
     }).catch(error => {
       console.log(error);
     });
@@ -135,15 +128,26 @@ exports.createHierarchy = function(request, response) {
   });
 };
 
+
+
+
+// ***** WELCOME TO THE GRAVEYARD ***** //
+
+
+
+
 // function Person(role, maleTitle, femaleTitle, description, person) {
-//   this.title = role;
-//   if (person.sex === 'male') {
+  //   this.title = role;
+  //   if (person.sex === 'male') {
 //     this.name = maleTitle + person.name;
 //   } else if (person.sex === 'female') {
-//     this.name = femaleTitle + person.name;
+  //     this.name = femaleTitle + person.name;
 //   }
 //   this.description = description;
 // }
+
+
+
 
 
 // government ,
@@ -166,13 +170,15 @@ exports.createHierarchy = function(request, response) {
 
 
 
+
+
 // for (let i = 0; i < totalNumberOfPeople; i++) {
   //   let newPerson = nameGenerator(request);
-//   nameArray.push(newPerson);
-// }
+  //   nameArray.push(newPerson);
+  // }
 
-// let ruler = [];
-// ruler.push(new Person(govData.government, govData.ruler_male_title, govData.ruler_female_title, govData.government_description, nameArray[0]));
+  // let ruler = [];
+  // ruler.push(new Person(govData.government, govData.ruler_male_title, govData.ruler_female_title, govData.government_description, nameArray[0]));
 // for (let i = 0; i < tier1Number; i++) {
 //   let tier1 = [];
 //   tier1.push(new Person(govData.tier1, govData.tier1_male_title, govData.tier1_female_title, govData.tier1_description, nameArray[ 1 + i ]));
@@ -182,7 +188,7 @@ exports.createHierarchy = function(request, response) {
 //     let tier3 = [];
 //     for (let k = 0; k < tier3Number; k++) {
   //       tier3.push(new Person(govData.tier3, govData.tier3_male_title, govData.tier3_female_title, govData.tier3_description, nameArray[ (1 + tier1Number + (tier1Number * tier2Number)) + (i * tier2Number * tier3Number) + (j * tier3Number) + k ]));
-//     }
+  //     }
 //     tier2.push(tier3);
 //     tier1.push(tier2);
 //   }
@@ -194,14 +200,16 @@ exports.createHierarchy = function(request, response) {
 
 
 
+
+
 // function createArray(a,b,c) {
 //   let ruler = [];
 //   for (let i = 0; i < a; i++) {
-//     let tier1 = [];
+  //     let tier1 = [];
 //     for (let j = 0; j < b; j++) {
-//       let tier2 = [];
+  //       let tier2 = [];
 //       for (let k = 0; k < c; k++) {
-//       let tier3 = [];
+  //       let tier3 = [];
 //       tier2.push(tier3);
 //       }
 //       tier1.push(tier2);
@@ -209,4 +217,27 @@ exports.createHierarchy = function(request, response) {
 //     ruler.push(tier1);
 //   }
 //   return ruler;
+// }
+
+
+
+
+
+
+
+// function nameGenerator(request, response) {
+//   let gender = determineGender(request);
+//   const culture = determineCulture(request);
+//   const url =`http://api.name-fake.com/${culture}/${gender}`;
+
+//   superagent(url).then(result => {
+//     let randomName = result.name;
+//     let person = {
+//       name: randomName,
+//       sex: gender
+//     };
+//     return person;
+//   }).catch(error => {
+//     errorHandler(error, request, response);
+//   });
 // }

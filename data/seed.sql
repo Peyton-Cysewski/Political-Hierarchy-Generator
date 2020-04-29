@@ -1,4 +1,4 @@
-INSERT INTO users (user_name, user_password) VALUES ('Test User2','Test Password2');
+INSERT INTO users (user_name, user_password) VALUES ('Default User','Default Password');
 
 INSERT INTO politics (user_id, government, ruler_male_title, ruler_female_title, government_description, tier1, tier1_male_title, tier1_female_title, tier1_description, tier2, tier2_male_title, tier2_female_title, tier2_description, tier3, tier3_male_title, tier3_female_title, tier3_description) VALUES (
   1,
