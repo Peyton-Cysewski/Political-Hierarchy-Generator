@@ -83,51 +83,51 @@ exports.createHierarchy = function(request, response) {
 // ['king','duke','duke','baron','baron','baron','baron','count','count','count','count','count','count','count','count']
 // // idea 2
 // ['king','duke','baron','count','count','baron','count','count','duke','baron','count','count','baron','count','count']
- idea 3
-  result array [
-    [{name: king}], 
-    [
-      {king:duke1},
-      {king:duke2},
-      {king:duke3},
-    ],  
-    [
-      [
-        {duke1:baron1},
-        {duke1:baron2},
-        {duke1:baron3},
-      ],
-      [
-        {duke2:baron1},
-        {duke2:baron2},
-        {duke2:baron3},
-      ],
-      [
-        {duke3:baron1},
-        {duke3:baron2},
-        {duke3:baron3},
-      ]
-    ],
-    [
-      [
-        {baron1:count1},
-        {baron1:count2},
-        {baron1:count3},
-        {baron1:count4},
-      ],
-      [
-        {baron2:count1},
-        {baron2:count2},
-        {baron2:count3},
-        {baron2:count4},
-      ],
-      [
-        {baron3:count1},
-        {baron3:count2},
-        {baron3:count3},
-        {baron3:count4},
-      ]
-    ]
+//  idea 3
+//   result array [
+//     [{name: king}], 
+//     [
+//       {king:duke1},
+//       {king:duke2},
+//       {king:duke3},
+//     ],  
+//     [
+//       [
+//         {duke1:baron1},
+//         {duke1:baron2},
+//         {duke1:baron3},
+//       ],
+//       [
+//         {duke2:baron1},
+//         {duke2:baron2},
+//         {duke2:baron3},
+//       ],
+//       [
+//         {duke3:baron1},
+//         {duke3:baron2},
+//         {duke3:baron3},
+//       ]
+//     ],
+//     [
+//       [
+//         {baron1:count1},
+//         {baron1:count2},
+//         {baron1:count3},
+//         {baron1:count4},
+//       ],
+//       [
+//         {baron2:count1},
+//         {baron2:count2},
+//         {baron2:count3},
+//         {baron2:count4},
+//       ],
+//       [
+//         {baron3:count1},
+//         {baron3:count2},
+//         {baron3:count3},
+//         {baron3:count4},
+//       ]
+//     ]
    
 
 
@@ -141,7 +141,8 @@ exports.createHierarchy = function(request, response) {
     //     superior:
     //     }
 
-[duke1,duke2,duk][]}]
+// [duke1,duke2,duk][]}]
+
   let nameArray = [];
   let tier1Number = request.body.tier1;
   let tier2Number = request.body.tier2;
@@ -204,6 +205,8 @@ exports.createHierarchy = function(request, response) {
       tier3Array.push(titleAndNameGender);
     } else if (index > (tier1Number * tier2Number) && person.sex === 'female') {
       title = data.tier3_female_title;
+      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
+      tier3Array.push(titleAndNameGender);
     }
 
 
