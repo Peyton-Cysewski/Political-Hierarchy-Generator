@@ -1,8 +1,8 @@
 <label>Goverment</label>
-<select name = "government">
- <option value="" disabled>Choose the Structure of Your Political Hierarchy</option>
- <% availableGovernments.forEach( item => { %>
-   <option value="<%= item.id %>" > <%= item.government %> </option>
-
- <% }) %>
+  <select name = "government">
+    <option value="" disabled default>Choose the Structure of Your Political Hierarchy</option>
+    <option value = "german" required>German</option>
+    <option value = "greek" required>Greek</option>
+    <option value = "japeneese" required>Japeneese</option>
+    <option value = "slovak" required>Slovak</option>
 </select>
