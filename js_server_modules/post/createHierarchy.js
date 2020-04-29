@@ -68,158 +68,101 @@ function nameGenerator(request, response) {
   });
 }
 
+function createArray(a,b,c) {
+  let ruler = [];
+  for (let i = 0; i < a; i++) {
+    let tier1 = [];
+    for (let j = 0; j < b; j++) {
+      let tier2 = [];
+      for (let k = 0; k < c; k++) {
+      let tier3 = [];
+      tier2.push(tier3);
+      }
+      tier1.push(tier2);
+    }
+    ruler.push(tier1);
+  }
+  return ruler;
+}
 
 
-let testArray = ['king', 'duke', 'duke', 'baron', 'baron', 'baron', 'baron', 'count', 'count', 'count', 'count','count', 'count', 'count', 'count'];
+// let testArray = ['king', 'duke', 'duke', 'baron', 'baron', 'baron', 'baron', 'count', 'count', 'count', 'count','count', 'count', 'count', 'count'];
 
-let ownedbyRuler = testArray.map( (tier1Person, index) => ) 
+// let ownedbyRuler = testArray.map( (tier1Person, index) => ) 
 
 
 
 
 exports.createHierarchy = function(request, response) {
-  // [2,2,2]
-// // idea 1
-// ['king','duke','duke','baron','baron','baron','baron','count','count','count','count','count','count','count','count']
-// // idea 2
-// ['king','duke','baron','count','count','baron','count','count','duke','baron','count','count','baron','count','count']
- idea 3
-  result array [
-    [{name: king}], 
-    [
-      {king:duke1},
-      {king:duke2},
-      {king:duke3},
-    ],  
-    [
-      [
-        {duke1:baron1},
-        {duke1:baron2},
-        {duke1:baron3},
-      ],
-      [
-        {duke2:baron1},
-        {duke2:baron2},
-        {duke2:baron3},
-      ],
-      [
-        {duke3:baron1},
-        {duke3:baron2},
-        {duke3:baron3},
-      ]
-    ],
-    [
-      [
-        {baron1:count1},
-        {baron1:count2},
-        {baron1:count3},
-        {baron1:count4},
-      ],
-      [
-        {baron2:count1},
-        {baron2:count2},
-        {baron2:count3},
-        {baron2:count4},
-      ],
-      [
-        {baron3:count1},
-        {baron3:count2},
-        {baron3:count3},
-        {baron3:count4},
-      ]
-    ]
-   
-
-
-
-
-    // idea 4
-    // person {
-    //     title:
-    //     name:
-    //     gender:
-    //     superior:
-    //     }
-
-[duke1,duke2,duk][]}]
-  let nameArray = [];
   let tier1Number = request.body.tier1;
   let tier2Number = request.body.tier2;
   let tier3Number = request.body.tier3;
   let declaredGovernment = request.body.government;
-  let totalNumberOfPeople = tier1Number * tier2Number * tier3Number + 1;
+  let totalNumberOfPeople = 1 + tier1Number + (tier1Number * tier2Number) + (tier1Number * tier2Number * tier3Number);
 
-
+  let nameArray = [];
+  let govData;
+  
+  // let outputArray = createArray(tier1Number, tier2Number, tier3Number);
+  
   let selectQuery = `SELECT * FROM politics WHERE government=$1;`;
   let selectValues = [declaredGovernment];
-
-  let data = dbClient.query(selectQuery, selectValues)
-    .then(data => {
-      console.log(data);
-      return data;
-    });
-  let tier1Array =[];
+  dbClient.query(selectQuery, selectValues)
+  .then(dbRes => {
+    govData = dbRes.rows;
+  });
+  // console.log(govData);
+    
   for (let i = 0; i < totalNumberOfPeople; i++) {
     let newPerson = nameGenerator(request);
     nameArray.push(newPerson);
   }
-  nameArray.map( (person, index) => {
-    let title = '';
-    let personName = '';
-    let titleAndNameGender = '';
+  // console.log(nameArray);
 
-    if (index === 0 && person.sex === 'male') {
-      title = data.ruler_male_title;
-      personName = person.name;
-      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
-
-    } else if (index === 0 && person.sex === 'female') {
-      title = data.ruler_female_title;
-      personName = person.name;
-      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
-
-    } else if (index > 0 && index <= tier1Number && person.sex === 'male') {
-      title = data.tier1_male_title;
-      personName = person.name;
-      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
-      tier1Array.push(titleAndNameGender);
-
-    } else if (index > 0 && index <= tier1Number && person.sex === 'female') {
-      title = data.tier1_female_title;
-      personName = person.name;
-      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
-      tier1Array.push(titleAndNameGender);
-    } else if (index > tier1Number && index <= (tier1Number * tier2Number) && person.sex === 'male') {
-      title = data.tier2_male_title;
-      personName = person.name;
-      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
-      tier2Array.push(titleAndNameGender);
-    } else if (index > tier1Number && index <= (tier1Number * tier2Number)&& person.sex === 'female') {
-      title = data.tier2_female_title;      personName = person.name;
-      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
-      tier2Array.push(titleAndNameGender);
-    } else if (index > (tier1Number * tier2Number) && person.sex === 'male') {
-      title = data.tier3_male_title;      personName = person.name;
-      titleAndNameGender = title + ' ' + personName + ' (' + person.sex + ')';
-      tier3Array.push(titleAndNameGender);
-    } else if (index > (tier1Number * tier2Number) && person.sex === 'female') {
-      title = data.tier3_female_title;
+  let ruler = [];
+  ruler.push(new Person(govData.government, govData.ruler_male_title, govData.ruler_female_title, govData.government_description, nameArray[0]));
+  for (let i = 0; i < tier1Number; i++) {
+    let tier1 = [];
+    tier1.push(new Person(govData.tier1, govData.tier1_male_title, govData.tier1_female_title, govData.tier1_description, nameArray[ 1 + i ]));
+    for (let j = 0; j < tier2Number; j++) {
+      let tier2 = [];
+      tier2.push(new Person(govData.tier2, govData.tier2_male_title, govData.tier2_female_title, govData.tier2_description, nameArray[ (1 + tier1Number) + (i * tier2Number) + j ]));
+      let tier3 = [];
+      for (let k = 0; k < tier3Number; k++) {
+        tier3.push(new Person(govData.tier3, govData.tier3_male_title, govData.tier3_female_title, govData.tier3_description, nameArray[ (1 + tier1Number + (tier1Number * tier2Number)) + (i * tier2Number * tier3Number) + (j * tier3Number) + k ]));
+      }
+      tier2.push(tier3);
+      tier1.push(tier2);
     }
-
-
-  });
-  console.log(nameArray);
+    ruler.push(tier1);
+  }
+  return ruler;
 };
 
-<ul>
-    <li>king person name (male)</li>
-        <ul>
-            <li>duke some guy (male)</li>
-                <ul>
-                    <li>baron payton cat(male)</li>
-                        <ul>
-                    <li>baron payton dragonslayer(male)</li>
+function Person(role, maleTitle, femaleTitle, description, person) {
+  this.title = role;
+  if (person.sex === 'male') {
+    this.name = maleTitle + person.name;
+  } else if (person.sex === 'female') {
+    this.name = femaleTitle + person.name;
+  }
+  this.description = description;
+}
 
-                </ul>
-            <li>duchess some gal (female)</li>
-        </ul>
+
+// government ,
+// ruler_male_title ,
+// ruler_female_title ,
+// government_description,
+// tier1 , 
+// tier1_male_title ,
+// tier1_female_title ,
+// tier1_description,
+// tier2 ,
+// tier2_male_title ,
+// tier2_female_title ,
+// tier2_description,
+// tier3 , 
+// tier3_male_title ,
+// tier3_female_title ,
+// tier3_description
