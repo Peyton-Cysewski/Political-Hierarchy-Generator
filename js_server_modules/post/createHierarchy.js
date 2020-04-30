@@ -156,14 +156,13 @@ exports.createHierarchy = function(request, response) {
           response.render('result', { rulerArray: ruler, creationName: request.body.creationName, loggedIn: false, user_id: null, user_name: null });
         }
       }).catch(error => {
-        console.log(error);
+        console.log('DB query error is: ',error);
       });
     }).catch(error => {
-      console.log(error);
+      console.log('API request error is: ',error);
     });
 };
 
- 
 
 
 // ***** WELCOME TO THE GRAVEYARD ***** //

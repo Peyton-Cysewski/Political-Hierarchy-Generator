@@ -33,6 +33,9 @@ Using the Blob.js library made by:
  * License: MIT
  *   See https://github.com/eligrey/Blob.js/blob/master/LICENSE.md
 
+ Didn't use that for saving files, instead used: https://www.printfriendly.com/button
+ via 
+
 ## User Stories
 
 #### Story 1

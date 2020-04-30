@@ -1,13 +1,15 @@
 /* Header */
 header {
     text-align: center;
-    background-color: lightgray;
+    /* background-color: lightgray; */
     padding: 20px 0;
 }
 
 header h1 {
     padding-bottom: 20px;
     font-size: xx-large;
+    text-shadow: 0 0 3px rgb(231, 235, 161), 0 0 5px #0000FF;
+    color:white;
 }
 
 header nav ul {
@@ -16,13 +18,17 @@ header nav ul {
 
 header nav ul li {
     width: 33.3333%;
+    text-shadow: 0 0 3px rgb(231, 235, 161), 0 0 5px #0000FF;
+
 }
 
 /* Footer */
 footer {
     text-align: center;
-    background-color: lightgray;
+    /* background-color: lightgray; */
     padding: 20px 0;
+    text-shadow: 0 0 3px rgb(255, 14, 14), 0 0 5px #0000FF;
+
 }
 
 footer ul {
@@ -33,6 +39,10 @@ footer ul li {
     width: 33.3333%;
 }
 
+form h1{
+    text-shadow: 0 0 3px rgb(255, 14, 14), 0 0 5px #0000FF;
+
+}
 /* Index Main */
 
 #hierarchyForm {
@@ -155,4 +165,6 @@ footer ul li {
     background-color: whitesmoke;
 }
 
-
+body main form button img {
+	border-radius: 45%;
+}

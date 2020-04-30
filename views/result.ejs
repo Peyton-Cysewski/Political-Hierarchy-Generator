@@ -3,9 +3,6 @@
 <%- include('layout/head') %>
 <title>New Hierarchy</title>
 <body>
-  <audio id="musicplayer" autoplay>
-    <source src="\public\img\331_full_epic-arrival_0167_preview.mp3">
-  </audio>
   <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main class="resultsContainer">
     <h1><%= creationName %></h1>
@@ -40,13 +37,20 @@
       </div>
   
     <% if (loggedIn) { %>
-      <form id="saveHierarchy" action="/save" method="POST">
-        <label for="submit">Save This Hierarchy</label>
-        <button name="user_id" value="<%= user_id %>" type="submit">
-          <img src="img\saveicon.png" alt="save-icon">
-        </button>
-      </form>
-    <% } %>
+      
+      <div id="saveResult">
+        <form id="saveHierarchy" action="/save" method="POST">
+          <label for="submit">Save This Hierarchy</label>
+          <button name="user_id" value="<%= user_id %>" type="submit">
+            <img id="saveIcon" style="width:100px" src="img/save.png" alt="save-icon">
+          </button>
+        </form>
+      </div>
+      <div id="utility">
+        <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-email-button-md.png" alt="Print Friendly and PDF"/></a>
+
+      </div>  
+      <% } %>
   </main> 
   <%- include('layout/footer') %>
 </body>
