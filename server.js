@@ -35,6 +35,7 @@ app.use(express.static('public'));
 // JS MODULES
 const renderHomePage = require('./js_server_modules/get/renderHomePage.js');
 const createHierarchy = require('./js_server_modules/post/createHierarchy.js');
+const renderNewAccount = require('./js_server_modules/get/renderNewAccount.js');
 
 
 // ALL ROUTES + CALLBACKS
@@ -44,7 +45,7 @@ const createHierarchy = require('./js_server_modules/post/createHierarchy.js');
 app.get('/', renderHomePage.renderHomePage);               // ROUTE WORKING, VIEW IN PROGRESS // - will display a different header view when user is logged out versus when logged in.
 // app.get('/hierarchy', renderHierarchy);                 // TODO // - will display a different header view when user is logged out versus when logged in.
 // app.get('/login', renderLoginPage);                     // IGNORE // - displays the login page with form for username and password; a link to create account is also visible.
-// app.get('/createAccount', renderNewAccount);            // IGNORE // - displays a similar form to the login page; (Stretch: as the user puts in their username, checks database and denies it if it has already been taken, case sensitive).
+app.get('/createAccount', renderNewAccount.renderNewAccount);            // IGNORE // - displays a similar form to the login page; (Stretch: as the user puts in their username, checks database and denies it if it has already been taken, case sensitive).
 // app.get('/saved', renderSavedHierarchies);              // TODO // - displays a list of all the save-names of the hierarchies that user has ever created; (Stretch: can sort by name or by hidden id).
 // app.get('/paginatedSaved', renderPaginatedHierarchies); // TODO // - displays a hierarchy in the same format that the 'renderHierarchy' function shows, but with paging buttons that paginate through the list from the previous view.
 // stretch goals

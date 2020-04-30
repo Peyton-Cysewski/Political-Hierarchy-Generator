@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layout/head') %>
+<title>Create Account</title>
+<body>
+  <%- include('layout/header', { loggedIn, user_id }) %>
+  <main>
+
+    <form id="signupForm" action='/create' method='POST'>
+        <label for="username">New User Name
+          <input type="text" name="username" required>
+        </label>
+        <label for="password">New Password
+          <input type="password" name="password" required>
+        </label>
+        <button>Sign Up</button>
+    </form>
+
+  </main> 
+  <%- include('layout/footer') %>
+</body>
+</html>

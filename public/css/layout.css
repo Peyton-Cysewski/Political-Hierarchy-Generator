@@ -51,3 +51,23 @@ footer ul li {
 #hierarchyForm button {
     margin: 0 auto;
 }
+
+/* Create New Account Main */
+
+#signupForm {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#signupForm input, button {
+    display: block;
+}
+
+#signupForm select {
+    width: 250px;
+}
+
+#signupForm button {
+    margin: 0 auto;
+}

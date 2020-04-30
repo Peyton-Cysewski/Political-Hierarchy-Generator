@@ -3,7 +3,7 @@
 <%- include('layout/head') %>
 <title>Hierarchy Generator</title>
 <body>
-  <%- include('layout/loggedOutHeader') %>
+  <%- include('layout/header', { loggedIn, user_id }) %>
   <main>
 
     <form id="hierarchyForm" action='/create' method='POST'>
