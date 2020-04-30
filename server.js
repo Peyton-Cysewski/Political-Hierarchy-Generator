@@ -47,7 +47,7 @@ const login = require('./js_server_modules/get/login.js');
 // ROUTE TYPE   -----------------------------------------------------   STATUS   -----------------   DESCRIPTION   --------------------------------------------------------------------------- //
 // GET
 app.get('/', renderHomePage.renderHomePage);                         // ROUTE WORKING, VIEW IN PROGRESS // - will display a different header view when user is logged out versus when logged in.
-app.get('/home/:id:name', renderLoggedInHomePage.renderLoggedInHomePage)
+app.get('/home/:user', renderLoggedInHomePage.renderLoggedInHomePage)
 app.get('/login', login.login);                                         // TODO // - logs the user in by checking to see if their username and password match, returning them to the page they were just at, either to the home page or the hierarchy they just created while logged out.
 app.get('/loginPage', renderLoginPage.renderLoginPage);                  // ROUTE WORKING, VIEW IN PROGRESS // - displays the login page with form for username and password; a link to create account is also visible.
 app.get('/createAccount', renderNewAccount.renderNewAccount);        // ROUTE WORKING, VIEW IN PROGRESS // - displays a similar form to the login page; (Stretch: as the user puts in their username, checks database and denies it if it has already been taken, case sensitive).

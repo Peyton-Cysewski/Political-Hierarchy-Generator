@@ -1,7 +1,7 @@
 exports.renderLoggedInHomePage = function (req, res) {
-  // console.log(req.params);
+  console.log(req.params.user);
   // console.log(req.params.id);
   // console.log(req.params.name);
-  let name = req.params.name.slice(1);
-  res.render('home', { loggedIn: true, user_id: req.params.id, user_name: name });
+  let data = req.params.user.split('+');
+  res.render('home', { loggedIn: true, user_id: data[0], user_name: data[1] });
 };

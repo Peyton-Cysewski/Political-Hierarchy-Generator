@@ -19,14 +19,14 @@ dbClient.connect(error => {
 });
 
 exports.login = function(request, response) {
-  console.log(request);
+  // console.log(request.query);
 
-  let SQL = 'SELECT (id, user_name) FROM users WHERE user_name=$1 AND user_password=$2;';
-  let values = [request.body.username, request.body.password];
+  let SQL = 'SELECT id FROM users WHERE user_name=$1 AND user_password=$2;';
+  let values = [request.query.username, request.query.password];
 
   dbClient.query(SQL, values).then(dbRes => {
-    // console.log(dbRes.rows[0]);
-    response.render('home', { loggedIn: true, user_id: dbRes.rows[0].id, user_name: dbRes.rows[0].user_name })
+    // console.log(dbRes.rows);
+    response.render('home', { loggedIn: true, user_id: dbRes.rows[0].id, user_name: request.query.username })
   }).catch(error => {
     console.log(error);
     response.render('error', { message: 'Sorry, you entered the wrong username or password', loggedIn: false, user_id: null, user_name: null });
