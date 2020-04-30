@@ -71,3 +71,23 @@ footer ul li {
 #signupForm button {
     margin: 0 auto;
 }
+
+/* Login Page Main */
+
+#loginForm {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#loginForm input, button {
+    display: block;
+}
+
+#loginForm select {
+    width: 250px;
+}
+
+#loginForm button {
+    margin: 0 auto;
+}
