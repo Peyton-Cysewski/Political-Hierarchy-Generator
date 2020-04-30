@@ -3,7 +3,7 @@
 <%- include('layout/head') %>
 <title>New Hierarchy</title>
 <body>
-  <%- include('layout/loggedOutHeader') %>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main class="resultsContainer">
     <div class="government_container">
     <% for (let i = 0; i < rulerArray.length; i++) { %>

@@ -52,6 +52,10 @@ footer ul li {
     margin: 0 auto;
 }
 
+#hierarchyForm input {
+    display: none;
+}
+
 /* Create New Account Main */
 
 #signupForm {

@@ -2,9 +2,9 @@
   <h1>Political Hierachy Generator</h1>
   <nav>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/saved">My Hierarchies</a></li>
-      <li><a href="/accountSettings">USERNAME FROM ID HERE</a></li>
+      <li><a href="/home/<%= user_id %>&<%= user_name %>">Create</a></li>
+      <li><a href="/saved/<%= user_id %>">My Hierarchies</a></li>
+      <li><a href="/accountSettings/<%= user_id %>"><%= user_name %></a></li>
     </ul>
   </nav>
 </header>

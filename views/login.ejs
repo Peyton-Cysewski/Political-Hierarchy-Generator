@@ -3,17 +3,17 @@
 <%- include('layout/head') %>
 <title>Create Account</title>
 <body>
-  <%- include('layout/header', { loggedIn, user_id }) %>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main>
 
-    <form id="loginForm" action='/login' method='POST'>
+    <form id="loginForm" action='/login' method='GET'>
         <label for="username">User Name
           <input type="text" name="username" required>
         </label>
         <label for="password">Password
           <input type="password" name="password" required>
         </label>
-        <button>Login</button>
+        <button type="submit">Login</button>
     </form>
 
   </main> 

@@ -3,7 +3,7 @@
 <%- include('layout/head') %>
 <title>Hierarchy Generator</title>
 <body>
-  <%- include('layout/header', { loggedIn, user_id }) %>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main>
 
     <form id="hierarchyForm" action='/create' method='POST'>
@@ -12,6 +12,8 @@
       <%- include('layout/genderform') %>
       <%- include('layout/governmentform') %>
       <%- include('layout/tiersForm') %>
+      <input id="hiddenInput" name="user_id" value="<%= user_id %>">
+      <input id="hiddenInput" name="user_name" value="<%= user_name %>">
       <button type="submit">Generate Hierarchy</button>
     </form>
 

@@ -10,7 +10,7 @@ dbClient.connect(error => {
   if (error) {
     console.log('Something went wrong with the Database: ' + error);
   } else {
-    console.log('Connected to database');
+    console.log('Connected to database in createHierarchy.js');
   }
 });
 
@@ -66,7 +66,7 @@ function Person(tierName, maleTitle, femaleTitle, description, person) {
 
 // MAIN IMPORTANT FUNCTION
 exports.createHierarchy = function(request, response) {
-  // console.log(request.body);
+  console.log(request.body);
   let tier1Number = parseInt(request.body.tier1);
   let tier2Number = parseInt(request.body.tier2);
   let tier3Number = parseInt(request.body.tier3);
@@ -138,11 +138,13 @@ exports.createHierarchy = function(request, response) {
         }
         ruler.push(tier1);
       }
-      // RENDER HERE
-      // return ruler;
       // console.log(ruler);
       // response.send(ruler);
-      response.render('result', { rulerArray: ruler });
+      if (request.body.user_id !== '' && request.body.user_name !== '') {
+        response.render('result', { rulerArray: ruler, loggedIn: true, user_id: request.body.user_id, user_name: request.body.user_name });
+      } else {
+        response.render('result', { rulerArray: ruler });
+      }
     }).catch(error => {
       console.log(error);
     });

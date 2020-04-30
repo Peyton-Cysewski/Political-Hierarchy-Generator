@@ -3,7 +3,7 @@
 <%- include('layout/head') %>
 <title>Create Account</title>
 <body>
-  <%- include('layout/header', { loggedIn, user_id }) %>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main>
 
     <form id="signupForm" action='/signup' method='POST'>
