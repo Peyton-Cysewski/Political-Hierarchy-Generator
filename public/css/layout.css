@@ -1,0 +1,73 @@
+header h1{
+    font-size: xx-large;
+    font-family: fantasy;
+    margin: 10px;
+}
+
+ul {
+    width: 100%;
+    display: flex;
+}
+
+.tier_government {
+    padding: 5px;
+    background-color: rgba(241, 224, 192, .75);
+    margin: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    justify-content: start;
+}
+
+.tier_tier1 {
+    padding: 5px;
+    background-color: rgba(241, 224, 192, .75);
+    margin: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    justify-content: start; 
+}
+
+.tier_tier2 {
+    padding: 5px;
+    background-color: rgba(241, 224, 192, .75);
+    margin: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    justify-content: center;
+}
+
+.tier_tier3 {
+    padding: 5px;
+    background-color: rgba(241, 224, 192, .75);
+    margin: 5px;
+    border-radius: 5px;
+    width: fit-content;
+    justify-content: end;
+}
+
+/* Login and Signup Sections */
+
+#signup {
+    display: none;
+}
+
+#login {
+    display: none;
+}
+
+/* Header + Nav Bar */
+
+header {
+    background-color: darkgray;
+    display: flexbox;
+    text-align: center;
+}
+
+nav ul li {
+    display: flex;
+    width: 33.333%;
+    height: 40px;
+    text-align: center;
+    align-self: center;
+    
+}

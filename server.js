@@ -52,8 +52,9 @@ app.get('/', renderHomePage.renderHomePage);               // ROUTE WORKING, VIE
 // app.get('/about', renderAboutPage);                     // TODO //
 
 // POST
-app.post('/create', createHierarchy.createHierarchy);    // TODO // - generates hierarchy before rendering it.
+app.post('/create', createHierarchy.createHierarchy);      // ROUTE WORKING, VIEW IN PROGRESS // - generates hierarchy before rendering it.
 // app.post('/login', login);                              // TODO // - logs the user in by checking to see if their username and password match, returning them to the page they were just at, either to the home page or the hierarchy they just created while logged out.
+// app.post('/signup', signup);                            // TODO // - creates a new user in by checking to see if their username has already been take; if not, then they will be added and signed in.
 
 // PUT
 // app.put('/createAccount', saveUser);                    // TODO // - sends login data to be saved to database 'project' in table 'users'. 

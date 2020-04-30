@@ -4,36 +4,36 @@
 <title>Your Hierarchy</title>
 <body>
   <%- include('layout/loggedOutHeader') %>
-  <main>
-    
+  <main class="resultsContainer">
+    <ul>
     <% for (let i = 0; i < rulerArray.length; i++) { %>
       <% if (i === 0) { %>
         <%- include('layout/resultTierTemplate', { ruler: rulerArray[i], tier: 'government' }) %>
       <% } else { %>
-        <div class="tier_1_container">
+        <li>
         <% for (let j = 0; j < rulerArray[i].length; j++) { %>
           <% if (j === 0) { %>
-            <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j], tier: '1'}) %>
+            <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j], tier: 'tier1'}) %>
           <% } else { %>
-            <div class="tier_2_container">
+            <li>
               <% for (let k = 0; k < rulerArray[i][j].length; k++) { %>
                 <% if (k == 0) { %>
-                  <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k], tier: '2' }) %>
+                  <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k], tier: 'tier2' }) %>
                 <% } else { %>
-                  <div class="tier_3_container">
+                  <li>
                   <% for (let l = 0; l < rulerArray[i][j][k].length; l++) { %>
-                    <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k][l], tier: '3' }) %>
+                    <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k][l], tier: 'tier3' }) %>
                   <% } %>
-                  </div>
+                  </li>
               <% } %>
             <% } %>
-            </div>
+                </li>
           <% } %>
         <% } %>
-        </div>
+              </li>
       <% } %>
     <% } %>
-
+      </ul>
   </main> 
   <%- include('layout/footer') %>
 </body>
