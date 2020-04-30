@@ -8,12 +8,9 @@
 
     <form id="hierarchyForm" action='/create' method='POST'>
       <h1>Select Your Parameters</h1>
-      <%- include('layout/cultureform') %>
-      <%- include('layout/genderform') %>
-      <%- include('layout/governmentform') %>
-      <%- include('layout/tiersForm') %>
-      <input id="hiddenInput" name="user_id" value="<%= user_id %>">
-      <input id="hiddenInput" name="user_name" value="<%= user_name %>">
+      <%- include('layout/creationForm') %>
+      <input class="hiddenInput" name="user_id" value="<%= user_id %>">
+      <input class="hiddenInput" name="user_name" value="<%= user_name %>">
       <button type="submit">Generate Hierarchy</button>
     </form>
 

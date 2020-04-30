@@ -5,6 +5,7 @@
 <body>
   <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main class="resultsContainer">
+    <h1><%= creationName %></h1>
     <div class="government_container">
     <% for (let i = 0; i < rulerArray.length; i++) { %>
       <% if (i === 0) { %>
@@ -34,6 +35,13 @@
       <% } %>
     <% } %>
       </div>
+  
+    <% if (loggedIn) { %>
+      <form id="saveHierarchy" action="/save" method="POST">
+        <input id="metadata" name="metadata" value="<%= metadata %>">
+        <button type="submit">Save</button>
+      </form>
+    <% } %>
   </main> 
   <%- include('layout/footer') %>
 </body>

@@ -7,6 +7,7 @@ header {
 
 header h1 {
     padding-bottom: 20px;
+    font-size: xx-large;
 }
 
 header nav ul {
@@ -52,7 +53,12 @@ footer ul li {
     margin: 0 auto;
 }
 
-#hierarchyForm input {
+#creationNameInput {
+    text-align: center;;
+    width: 246px;
+}
+
+.hiddenInput {
     display: none;
 }
 
@@ -94,4 +100,17 @@ footer ul li {
 
 #loginForm button {
     margin: 0 auto;
+}
+
+/* Error Page Main */
+
+#errorMessage {
+    text-align: center;
+    font-size: x-large;
+}
+
+/* Results Page */
+
+#metadata {
+    display: none;
 }

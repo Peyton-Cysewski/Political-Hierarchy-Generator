@@ -37,7 +37,8 @@ DROP TABLE IF EXISTS hierarchy;
 CREATE TABLE IF NOT EXISTS hierarchy (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users (id),
-  -- politics_id INTEGER REFERENCES politics (id),
+  creation_name TEXT,
+  politics_id INTEGER REFERENCES politics (id),
   tier_number_array INTEGER[3],
-  tier_name_array TEXT[]
+  tier_name_array TEXT
 );

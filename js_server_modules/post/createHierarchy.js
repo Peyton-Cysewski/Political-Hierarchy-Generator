@@ -66,7 +66,7 @@ function Person(tierName, maleTitle, femaleTitle, description, person) {
 
 // MAIN IMPORTANT FUNCTION
 exports.createHierarchy = function(request, response) {
-  console.log(request.body);
+  // console.log(request.body);
   let tier1Number = parseInt(request.body.tier1);
   let tier2Number = parseInt(request.body.tier2);
   let tier3Number = parseInt(request.body.tier3);
@@ -138,12 +138,14 @@ exports.createHierarchy = function(request, response) {
         }
         ruler.push(tier1);
       }
+      let metadata = JSON.stringify({user_id: request.body.user_id, creation_name: request.body.creationName, politics_id: govData.id, tier_number_array: [tier1Number, tier2Number, tier3Number], tier_name_array: nameArray });
+      console.log(metadata);
       // console.log(ruler);
       // response.send(ruler);
       if (request.body.user_id !== '' && request.body.user_name !== '') {
-        response.render('result', { rulerArray: ruler, loggedIn: true, user_id: request.body.user_id, user_name: request.body.user_name });
+        response.render('result', { rulerArray: ruler, creationName: request.body.creationName, metadata: metadata, loggedIn: true, user_id: request.body.user_id, user_name: request.body.user_name });
       } else {
-        response.render('result', { rulerArray: ruler });
+        response.render('result', { rulerArray: ruler, creationName: request.body.creationName, loggedIn: false, user_id: null, user_name: null });
       }
     }).catch(error => {
       console.log(error);
@@ -153,7 +155,7 @@ exports.createHierarchy = function(request, response) {
   });
 };
 
-
+ 
 
 
 // ***** WELCOME TO THE GRAVEYARD ***** //
