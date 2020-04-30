@@ -14,6 +14,14 @@ dbClient.connect(error => {
   }
 });
 
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 function errorHandler(error, request, response) {
   response.status(500).send('Something went wrong: ' + error);
 }
@@ -71,10 +79,24 @@ exports.createHierarchy = function(request, response) {
   // let govData;
   
   for (let i = 0; i < totalNumberOfPeople; i++) {
+    sleep(100);
+    console.log('Delay ' + i );
     let gender = determineGender(request); //(request);
-    const culture = determineCulture(request);//(request);
+    const culture = determineCulture(request); //(request);
     const url =`https://api.namefake.com/${culture}/${gender}`;
-    promises.push(superagent.get(url));
+    promises.push(superagent.get(url)
+    // ALTERNATE TO BELOW
+    // .then(res => {
+    //   // console.log(res);
+    //   // console.log(people.map(person => JSON.parse(person.text).name));
+    //   let name = JSON.parse(res.text).name;
+    //   let gender = JSON.parse(res.text).pict;
+    //   return {
+    //     name: name,
+    //     sex: gender.slice(gender.search(/[a-z]/i))
+    //   }
+    // })
+    );
   }
   // console.log(promises);
   
@@ -90,7 +112,8 @@ exports.createHierarchy = function(request, response) {
         sex: gender.slice(gender.search(/[a-z]/i))
       }
     });
-  }).then(nameArray => {
+  })
+  .then(nameArray => {
     // console.log(nameArray);
     let selectQuery = `SELECT * FROM politics WHERE government=$1;`;
     let selectValues = [declaredGovernment];
