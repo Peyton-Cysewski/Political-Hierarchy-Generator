@@ -79,8 +79,8 @@ exports.createHierarchy = function(request, response) {
   // let govData;
   
   for (let i = 0; i < totalNumberOfPeople; i++) {
-    sleep(100);
-    console.log('Delay ' + i );
+    // sleep(100);
+    // console.log('Delay ' + i );
     let gender = determineGender(request); //(request);
     const culture = determineCulture(request); //(request);
     const url =`https://api.namefake.com/${culture}/${gender}`;

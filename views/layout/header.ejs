@@ -1,10 +1,5 @@
-<header>
-  <h1>Welcome to Political Hierachy Generator</h1>
-  <nav>
-    <ul>
-      <li><a href="/"></a>Create</a></li>
-      <li>Login</li>
-      <li>My Hierachies</li>
-    </ul>
-  </nav>
-</header>
+<% if (loggedIn) { %>
+  <%- include('layout/loggedInHeader') %>
+<% } else { %>
+  <%- include('layout/loggedOutHeader') %>
+<% } %>

@@ -3,20 +3,18 @@
 <%- include('layout/head') %>
 <title>Hierarchy Generator</title>
 <body>
-
   <%- include('layout/loggedOutHeader') %>
   <main>
-    <form action='/create' method='POST'>
-      <fieldset>
-        <%- include('layout/cultureform') %>
-        <%- include('layout/genderform') %>
-        <%- include('layout/governmentform') %>
-        <%- include('layout/tiersForm') %>
-        <button type="submit">Generate Hierarchy</button>
-     </fieldset>
 
-
+    <form id="hierarchyForm" action='/create' method='POST'>
+      <h1>Select Your Parameters</h1>
+      <%- include('layout/cultureform') %>
+      <%- include('layout/genderform') %>
+      <%- include('layout/governmentform') %>
+      <%- include('layout/tiersForm') %>
+      <button type="submit">Generate Hierarchy</button>
     </form>
+
   </main> 
   <%- include('layout/footer') %>
 </body>
