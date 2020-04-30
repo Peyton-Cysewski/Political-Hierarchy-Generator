@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('layout/head') %>
+<title>Hierarchy Generator</title>
 <body>
   <%- include('layout/loggedOutHeader') %>
   <main>
-    <form action='/input' method='POST'>
+    <form action='/create' method='POST'>
       <fieldset>
         <%- include('layout/cultureform') %>
         <%- include('layout/genderform') %>

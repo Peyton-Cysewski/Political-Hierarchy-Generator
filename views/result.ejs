@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layout/head') %>
+<title>Your Hierarchy</title>
+<body>
+  <%- include('layout/loggedOutHeader') %>
+  <main>
+    
+    <% for (let i = 0; i < rulerArray.length; i++) { %>
+      <% if (i === 0) { %>
+        <%- include('layout/resultTierTemplate', { ruler: rulerArray[i], tier: 'government' }) %>
+      <% } else { %>
+        <div class="tier_1_container">
+        <% for (let j = 0; j < rulerArray[i].length; j++) { %>
+          <% if (j === 0) { %>
+            <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j], tier: '1'}) %>
+          <% } else { %>
+            <div class="tier_2_container">
+              <% for (let k = 0; k < rulerArray[i][j].length; k++) { %>
+                <% if (k == 0) { %>
+                  <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k], tier: '2' }) %>
+                <% } else { %>
+                  <div class="tier_3_container">
+                  <% for (let l = 0; l < rulerArray[i][j][k].length; l++) { %>
+                    <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k][l], tier: '3' }) %>
+                  <% } %>
+                  </div>
+              <% } %>
+            <% } %>
+            </div>
+          <% } %>
+        <% } %>
+        </div>
+      <% } %>
+    <% } %>
+
+  </main> 
+  <%- include('layout/footer') %>
+</body>
+</html>

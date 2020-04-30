@@ -53,8 +53,8 @@ function determineCulture(request) {
 }
 
 
-function Person(role, maleTitle, femaleTitle, description, person) {
-  this.role = role;
+function Person(tierName, maleTitle, femaleTitle, description, person) {
+  this.tierName = tierName;
   if (person.sex === 'male') {
     this.title = maleTitle + ' ' +person.name;
   } else if (person.sex === 'female') {
@@ -141,8 +141,8 @@ exports.createHierarchy = function(request, response) {
       // RENDER HERE
       // return ruler;
       // console.log(ruler);
-      response.send(ruler);
-      // response.render('result', ruler);
+      // response.send(ruler);
+      response.render('result', { rulerArray: ruler });
     }).catch(error => {
       console.log(error);
     });

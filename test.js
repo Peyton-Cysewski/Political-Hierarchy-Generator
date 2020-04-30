@@ -46,3 +46,32 @@ Promise.all(promises)
   }).catch(error => {
     console.log(error);
   })
+
+
+
+
+
+
+
+// for (let i = 0; i < rulerArray.length; i++) {
+//   if (i === 0) {
+//     // government tier template
+//   } else {
+//     for (let j = 0; j < rulerArray[i].length; j++) {
+//       if (j === 0) {
+//         // tier 1 ruler template
+//       } else {
+//         for (let k = 0; k < rulerArray[i][j].length; k++) {
+//           if (k == 0) {
+//             // tier 2 ruler template
+//           } else {
+//             for (let l = 0; l < rulerArray[i][j][k].length; l) {
+//               // tier 3 ruler template
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+

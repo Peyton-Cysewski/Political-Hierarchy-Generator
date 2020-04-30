@@ -52,7 +52,7 @@ app.get('/', renderHomePage.renderHomePage);               // ROUTE WORKING, VIE
 // app.get('/about', renderAboutPage);                     // TODO //
 
 // POST
-app.post('/input', createHierarchy.createHierarchy);    // TODO // - generates hierarchy before rendering it.
+app.post('/create', createHierarchy.createHierarchy);    // TODO // - generates hierarchy before rendering it.
 // app.post('/login', login);                              // TODO // - logs the user in by checking to see if their username and password match, returning them to the page they were just at, either to the home page or the hierarchy they just created while logged out.
 
 // PUT
