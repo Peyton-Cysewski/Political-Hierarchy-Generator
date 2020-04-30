@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 // const pg = require('pg');
 const cors = require('cors');
 const PORT = process.env.PORT;
+console.log(PORT);
 
 
 // DEPENDENCY INTEGRATION
