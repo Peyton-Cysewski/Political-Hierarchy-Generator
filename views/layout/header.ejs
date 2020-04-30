@@ -1,0 +1,5 @@
+<% if (loggedIn) { %>
+  <%- include('loggedInHeader', { user_id, user_name }) %>
+<% } else { %>
+  <%- include('loggedOutHeader') %>
+<% } %>

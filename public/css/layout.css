@@ -1,0 +1,116 @@
+/* Header */
+header {
+    text-align: center;
+    background-color: lightgray;
+    padding: 20px 0;
+}
+
+header h1 {
+    padding-bottom: 20px;
+    font-size: xx-large;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    width: 33.3333%;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background-color: lightgray;
+    padding: 20px 0;
+}
+
+footer ul {
+    display: flex;
+}
+
+footer ul li {
+    width: 33.3333%;
+}
+
+/* Index Main */
+
+#hierarchyForm {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#hierarchyForm select, button {
+    display: block;
+}
+
+#hierarchyForm select {
+    width: 250px;
+}
+
+#hierarchyForm button {
+    margin: 0 auto;
+}
+
+#creationNameInput {
+    text-align: center;;
+    width: 246px;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+/* Create New Account Main */
+
+#signupForm {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#signupForm input, button {
+    display: block;
+}
+
+#signupForm select {
+    width: 250px;
+}
+
+#signupForm button {
+    margin: 0 auto;
+}
+
+/* Login Page Main */
+
+#loginForm {
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+#loginForm input, button {
+    display: block;
+}
+
+#loginForm select {
+    width: 250px;
+}
+
+#loginForm button {
+    margin: 0 auto;
+}
+
+/* Error Page Main */
+
+#errorMessage {
+    text-align: center;
+    font-size: x-large;
+}
+
+/* Results Page */
+
+#metadata {
+    display: none;
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layout/head') %>
+<title>Whoops!</title>
+<body>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
+  <main>
+
+    <h1 id="errorMessage"><%= message %></h1>
+
+  </main> 
+  <%- include('layout/footer') %>
+</body>
+</html>

@@ -1,67 +1,79 @@
 'use strict';
 
-require('dotenv').config();
 
+// DEPENDENCIES
+require('dotenv').config();
 const express = require('express');
 const app = express();
-
-const superagent = require('superagent');
-
-
-const ejs = require('ejs');
-app.set('view engine', 'ejs');
-
+// const superagent = require('superagent');
 const methodOverride = require('method-override');
-
-const pg = require('pg');
-
-const dbClient = new pg.Client(process.env.DATABASE_URL);
-
-dbClient.connect(error => {
-
-  if (error) {
-    console.log('Something went wrong with the Database: ' + error);
-  } else {
-    console.log('Connected to database');
-  }
-});
-
+// const pg = require('pg');
+const cors = require('cors');
 const PORT = process.env.PORT;
 
 
-
-let gender = '';
-let culture = '';
-
-function determineGender() {
-
-  let genderBias = request.query.gender;
-  let genderRoll =Math.random();
-  if (genderRoll < genderBias) {
-    gender = 'male';
-  } else {
-    gender = 'female';
-  }
-}
-
-function determineCulture() {
-  if (request.query.culture === 'german') {
-    culture = 'german_germany';
-  } else if (request.query.culture === 'greek') {
-    culture = 'greek-greece';
-  } else if (request.query.culture === 'japanese') {
-    culture = 'japanese-japan';
-  } else {
-    culture = 'slovak-slovakia';
-  }
-}
+// DEPENDENCY INTEGRATION
+app.set('view engine', 'ejs');
+app.use(cors());
+app.use(methodOverride('_method'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+// const dbClient = new pg.Client(process.env.DATABASE_URL);
 
 
-function generateName() {
-  determineGender();
-  determineCulture();
-  let url =`http://api.name-fake.com/${culture}/${gender}`;
+// DATABASE CONNECTION
+// dbClient.connect(error => {
 
-superagent(url)
+//   if (error) {
+//     console.log('Something went wrong with the Database: ' + error);
+//   } else {
+//     console.log('Connected to database');
+//   }
+// });
 
-}
+
+// JS MODULES
+const renderHomePage = require('./js_server_modules/get/renderHomePage.js');
+const createHierarchy = require('./js_server_modules/post/createHierarchy.js');
+const renderNewAccount = require('./js_server_modules/get/renderNewAccount.js');
+const renderLoginPage = require('./js_server_modules/get/renderLoginPage.js');
+const saveUser = require('./js_server_modules/post/saveUser.js');
+const renderLoggedInHomePage = require('./js_server_modules/get/renderLoggedInHomePage.js');
+const login = require('./js_server_modules/get/login.js');
+const saveHierarchy = require('./js_server_modules/post/saveHierarchy.js');
+
+
+
+// ALL ROUTES + CALLBACKS
+// **NOTE** - Callbacks need to be defined in module directories and imported directly above this section.
+// ROUTE TYPE   -----------------------------------------------------   STATUS   -----------------   DESCRIPTION   --------------------------------------------------------------------------- //
+// GET
+app.get('/', renderHomePage.renderHomePage);                            // ROUTE WORKING, VIEW IN PROGRESS // - will display a different header view when user is logged out versus when logged in.
+app.get('/home/:user', renderLoggedInHomePage.renderLoggedInHomePage)
+app.get('/login', login.login);                                         // TODO // - logs the user in by checking to see if their username and password match, returning them to the page they were just at, either to the home page or the hierarchy they just created while logged out.
+app.get('/loginPage', renderLoginPage.renderLoginPage);                 // ROUTE WORKING, VIEW IN PROGRESS // - displays the login page with form for username and password; a link to create account is also visible.
+app.get('/createAccount', renderNewAccount.renderNewAccount);           // ROUTE WORKING, VIEW IN PROGRESS // - displays a similar form to the login page; (Stretch: as the user puts in their username, checks database and denies it if it has already been taken, case sensitive).
+// app.get('/saved', renderSavedHierarchies);                           // TODO // - displays a list of all the save-names of the hierarchies that user has ever created; (Stretch: can sort by name or by hidden id).
+// app.get('/paginatedSaved', renderPaginatedHierarchies);              // TODO // - displays a hierarchy in the same format that the 'renderHierarchy' function shows, but with paging buttons that paginate through the list from the previous view.
+// app.get('/hierarchy', renderHierarchy);  ?????                       // TODO // - will display a different header view when user is logged out versus when logged in.
+// stretch goals
+// app.get('/accountSettings', renderAccountSettings);                  // TODO //
+// app.get('/about', renderAboutPage);                                  // TODO //
+
+// POST
+app.post('/create', createHierarchy.createHierarchy);                   // ROUTE WORKING, VIEW IN PROGRESS // - generates hierarchy before rendering it.
+app.post('/signup', saveUser.saveUser);                                 // TODO // - sends login data to be saved to database 'project' in table 'users'. 
+app.post('/save', saveHierarchy.saveHierarchy);                         // TODO // - saves the proper hierarchy metadata to the database 'project' in tables 'politics' and 'hierarchy'.
+
+// PUT
+// stretch goals
+// app.put('/updateUser', updateUser)                                   // TODO //
+
+// DELETE
+// stretch goals for admin only
+// app.delete...
+
+
+app.listen(PORT, ()=>{
+  console.log(`server is running on ${PORT}`);
+});
