@@ -3,6 +3,9 @@
 <%- include('layout/head') %>
 <title>New Hierarchy</title>
 <body>
+  <audio id="musicplayer" autoplay>
+    <source src="\public\img\331_full_epic-arrival_0167_preview.mp3">
+  </audio>
   <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main class="resultsContainer">
     <h1><%= creationName %></h1>
@@ -38,8 +41,10 @@
   
     <% if (loggedIn) { %>
       <form id="saveHierarchy" action="/save" method="POST">
-        <input id="metadata" name="metadata" value="<%= metadata %>">
-        <button type="submit">Save</button>
+        <label for="submit">Save This Hierarchy</label>
+        <button name="user_id" value="<%= user_id %>" type="submit">
+          <img src="img\saveicon.png" alt="save-icon">
+        </button>
       </form>
     <% } %>
   </main> 

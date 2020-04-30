@@ -12,6 +12,12 @@ const cors = require('cors');
 const PORT = process.env.PORT;
 
 
+const FileSaver = require('file-saver');
+// var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
+// FileSaver.saveAs(blob, "hello world.txt");
+// FileSaver saveAs(Blob/File/Url, optional DOMString filename, optional Object { autoBom: true });
+
+
 // DEPENDENCY INTEGRATION
 app.set('view engine', 'ejs');
 app.use(cors());
@@ -64,7 +70,7 @@ app.get('/createAccount', renderNewAccount.renderNewAccount);           // ROUTE
 app.post('/create', createHierarchy.createHierarchy);                   // ROUTE WORKING, VIEW IN PROGRESS // - generates hierarchy before rendering it.
 app.post('/signup', saveUser.saveUser);                                 // TODO // - sends login data to be saved to database 'project' in table 'users'. 
 app.post('/save', saveHierarchy.saveHierarchy);                         // TODO // - saves the proper hierarchy metadata to the database 'project' in tables 'politics' and 'hierarchy'.
-
+//
 // PUT
 // stretch goals
 // app.put('/updateUser', updateUser)                                   // TODO //

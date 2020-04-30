@@ -27,6 +27,12 @@ This is a project to create make a website for creative writers, world builders 
 - [API for Saving Files to local machine](https://www.w3.org/TR/FileAPI/)
 - [API for Gendered and Liguistically Consistent Name Generation](https://en.namefake.com/api)
 
+Using the Blob.js library made by:
+ * By Eli Grey, http://eligrey.com
+ * By Jimmy Wärting, https://github.com/jimmywarting
+ * License: MIT
+ *   See https://github.com/eligrey/Blob.js/blob/master/LICENSE.md
+
 ## User Stories
 
 #### Story 1

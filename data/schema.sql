@@ -42,3 +42,12 @@ CREATE TABLE IF NOT EXISTS hierarchy (
   tier_number_array INTEGER[3],
   tier_name_array TEXT
 );
+
+
+-- Saves temporary string
+DROP TABLE IF EXISTS temp;
+
+CREATE TABLE IF NOT EXISTS temp (
+  id SERIAL PRIMARY KEY,
+  metadata TEXT
+);

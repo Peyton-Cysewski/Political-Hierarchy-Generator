@@ -26,9 +26,10 @@ exports.login = function(request, response) {
 
   dbClient.query(SQL, values).then(dbRes => {
     // console.log(dbRes.rows);
-    response.render('home', { loggedIn: true, user_id: dbRes.rows[0].id, user_name: request.query.username })
+    response.render('home', { loggedIn: true, user_id: dbRes.rows[0].id, user_name: request.query.username });
   }).catch(error => {
     console.log(error);
     response.render('error', { message: 'Sorry, you entered the wrong username or password', loggedIn: false, user_id: null, user_name: null });
-  })
-}
+  });
+};
+

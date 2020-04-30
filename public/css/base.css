@@ -1,5 +1,12 @@
 body {
     /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Waldseemuller_map_2.jpg/1280px-Waldseemuller_map_2.jpg); */
     /* background-size: 100%; */
-    background-color: whitesmoke;
+    /* background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Waldseemuller_map_2.jpg/1280px-Waldseemuller_map_2.jpg); */
+    font-family: 'Satisfy', cursive;
 }
+
+main {
+    min-height: 500px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Waldseemuller_map_2.jpg/1280px-Waldseemuller_map_2.jpg);
+}
+
