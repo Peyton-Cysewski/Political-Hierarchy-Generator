@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layout/head') %>
+<title>Hierarchy Generator</title>
+<body>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
+  <main>
+
+    <div id="creationsContainer">
+     <h1>Your Created Hierarchies</h1>
+      <ul>
+      <% for (let i = 0; i < creationList.length; i++) { %>
+        <li class="tier1"><a href="/paginatedSaved/<%= creationList[i].id %>+<%= user_name %>"><%= creationList[i].creation_name %></a></li>
+      <% } %>
+      </ul>
+    </div>
+
+  </main> 
+  <%- include('layout/footer') %>
+</body>
+</html>;

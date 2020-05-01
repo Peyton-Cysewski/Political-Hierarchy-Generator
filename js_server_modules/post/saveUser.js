@@ -21,11 +21,23 @@ dbClient.connect(error => {
 exports.saveUser = function(request, response) {
   // console.log(request.body);
 
-  let SQL = 'INSERT INTO users (user_name, user_password) VALUES ($1, $2) RETURNING *;';
-  let values = [request.body.username, request.body.password];
+  let selectSQL = 'SELECT * FROM users WHERE user_name=$1;';
+  let selectValue = [request.body.username];
 
-  dbClient.query(SQL, values).then(dbRes => {
-    // console.log(dbRes.rows[0]);
-    response.render('home', { loggedIn: true, user_id: dbRes.rows[0].id, user_name: dbRes.rows[0].user_name })
-  })
-}
+  dbClient.query(selectSQL, selectValue).then(dbRes => {
+    console.log(dbRes.rows);
+    if (dbRes.rows[0]) {
+      response.render('error', { message: 'User Name Is in Use; Please Choose New User Name.', loggedIn: false, user_id: null, user_name: null });
+    } else {
+      let insertSQL = 'INSERT INTO users (user_name, user_password) VALUES ($1, $2) RETURNING *;';
+      let insertValues = [request.body.username, request.body.password];
+
+      dbClient.query(insertSQL, insertValues).then(dbRes => {
+        // console.log(dbRes.rows[0]);
+        response.render('home', { loggedIn: true, user_id: dbRes.rows[0].id, user_name: dbRes.rows[0].user_name });
+      });
+    }
+  });
+};
+
+

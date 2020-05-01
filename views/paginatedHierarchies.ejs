@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layout/head') %>
+<title>Saved Hierarchy</title>
+<body>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
+  <main class="resultsContainer">
+    <h1><%= creationName %></h1>
+    <div class="government_container">
+    <% for (let i = 0; i < rulerArray.length; i++) { %>
+      <% if (i === 0) { %>
+        <%- include('layout/resultTierTemplate', { ruler: rulerArray[i], tier: 'government' }) %>
+      <% } else { %>
+        <div class="tier_1_container">
+        <% for (let j = 0; j < rulerArray[i].length; j++) { %>
+          <% if (j === 0) { %>
+            <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j], tier: 'tier1'}) %>
+          <% } else { %>
+            <div class="tier_2_container">
+              <% for (let k = 0; k < rulerArray[i][j].length; k++) { %>
+                <% if (k == 0) { %>
+                  <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k], tier: 'tier2' }) %>
+                <% } else { %>
+                  <div class="tier_3_container">
+                  <% for (let l = 0; l < rulerArray[i][j][k].length; l++) { %>
+                    <%- include('layout/resultTierTemplate', { ruler: rulerArray[i][j][k][l], tier: 'tier3' }) %>
+                  <% } %>
+                  </div>
+              <% } %>
+            <% } %>
+            </div>
+          <% } %>
+        <% } %>
+        </div>
+      <% } %>
+    <% } %>
+    </div>
+    <div id="utility">
+      <script>var pfHeaderImgUrl = '';var pfHeaderTagline = '';var pfdisableClickToDel = 0;var pfHideImages = 0;var pfImageDisplayStyle = 'right';var pfDisablePDF = 0;var pfDisableEmail = 0;var pfDisablePrint = 0;var pfCustomCSS = '';var pfBtVersion='2';(function(){var js,pf;pf=document.createElement('script');pf.type='text/javascript';pf.src='//cdn.printfriendly.com/printfriendly.js';document.getElementsByTagName('head')[0].appendChild(pf)})();</script><a href="https://www.printfriendly.com" style="color:#6D9F00;text-decoration:none;" class="printfriendly" onclick="window.print();return false;" title="Printer Friendly and PDF"><img style="border:none;-webkit-box-shadow:none;box-shadow:none;" src="//cdn.printfriendly.com/buttons/printfriendly-pdf-email-button-md.png" alt="Print Friendly and PDF"/></a>
+
+    </div>  
+  </main> 
+  <%- include('layout/footer') %>
+</body>
+</html>

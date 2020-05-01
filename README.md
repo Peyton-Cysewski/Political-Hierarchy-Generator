@@ -6,7 +6,10 @@
 ## Created By: Peng Chen, Matthew Stewart, Joe Lee, Robert Carter, Peyton Cysewski
 
 ## Change Log
-Version 1.0.0 - 4/27/2020 2:31pm - Set up file directory and began writing code
+Version 1.0.0 - 4/27/2020 - Set up file directory and began writing code
+Version 1.0.1 - 4/28/2020 - First day of coding, worked on the function of interacting with the API to make the hierarchy
+Version 1.0.2 - 4/29/2020 - Found a somewhat viable solution to allow low numbers of API requests
+Version 1.0.3 - 4/30/2020 - Got to MVP
 
 
 ### Description
@@ -26,6 +29,15 @@ This is a project to create make a website for creative writers, world builders 
 ## API's
 - [API for Saving Files to local machine](https://www.w3.org/TR/FileAPI/)
 - [API for Gendered and Liguistically Consistent Name Generation](https://en.namefake.com/api)
+
+Using the Blob.js library made by:
+ * By Eli Grey, http://eligrey.com
+ * By Jimmy Wärting, https://github.com/jimmywarting
+ * License: MIT
+ *   See https://github.com/eligrey/Blob.js/blob/master/LICENSE.md
+
+ Didn't use that for saving files, instead used: https://www.printfriendly.com/button
+ via 
 
 ## User Stories
 
