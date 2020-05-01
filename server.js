@@ -10,6 +10,7 @@ const methodOverride = require('method-override');
 // const pg = require('pg');
 const cors = require('cors');
 const PORT = process.env.PORT;
+const path = require('path');
 
 
 const FileSaver = require('file-saver');
@@ -20,6 +21,7 @@ const FileSaver = require('file-saver');
 
 // DEPENDENCY INTEGRATION
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(cors());
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
