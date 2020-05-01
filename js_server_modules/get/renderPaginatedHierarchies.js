@@ -68,13 +68,14 @@ exports.renderPaginatedHierarchies = function(request, response){
               tier1.push(tier2);
             }
             ruler.push(tier1);
-          }  
-            // RENDER STATEMENT HERE
-          response.render('paginatedHierarchies', { rulerArray: ruler, creationName: creationName, loggedIn: true, user_id: user_id, user_name: user_name })
+          }
+          // RENDER STATEMENT HERE
+          response.render('paginatedHierarchies', { rulerArray: ruler, creationName: creationName, loggedIn: true, user_id: user_id, user_name: user_name });
         }).catch(error => {
-        console.log(error)
-      })
-    .catch(error => {
-      console.log(error)
-    })
-}
+          console.log(error);
+        });
+    }).catch(error => {
+      console.log(error);
+    });
+};
+
