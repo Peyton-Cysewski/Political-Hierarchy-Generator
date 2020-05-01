@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('./layout/head') %>
+<%- include('layout/head') %>
 <title>Hierarchy Generator</title>
 <body>
-  <%- include('./layout/header', { loggedIn, user_id, user_name }) %>
+  <%- include('layout/header', { loggedIn, user_id, user_name }) %>
   <main>
 
     <form id="hierarchyForm" action='/create' method='POST'>
       <h1>Select Your Parameters</h1>
-      <%- include('./layout/creationForm') %>
+      <%- include('/layout/creationForm') %>
       <input class="hiddenInput" name="user_id" value="<%= user_id %>">
       <input class="hiddenInput" name="user_name" value="<%= user_name %>">
       <button type="submit">Generate Hierarchy</button>
     </form>
 
   </main> 
-  <%- include('./layout/footer') %>
+  <%- include('/layout/footer') %>
 </body>
 </html>
