@@ -10,7 +10,7 @@
      <h1>Your Created Hierarchies</h1>
       <ul>
       <% for (let i = 0; i < creationList.length; i++) { %>
-        <li><%= creationName %></li>
+        <li class="tier1"><a href="/paginatedSaved/<%= creationList[i].id %>+<%= user_name %>"><%= creationList[i].creation_name %></a></li>
       <% } %>
       </ul>
     </div>
@@ -18,4 +18,4 @@
   </main> 
   <%- include('layout/footer') %>
 </body>
-</html>
+</html>;

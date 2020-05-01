@@ -33,7 +33,7 @@ exports.saveHierarchy = function(request, response) {
   }).then(data => {
     // console.log(data);
     let SQL = 'INSERT INTO hierarchy (user_id, creation_name, politics_id, tier_number_array, tier_name_array) VALUES ($1, $2, $3, $4, $5);';
-    let values = [data.user_id, data.creation_name, data.politics_id, data.tier_number_array, data.tier_name_array];
+    let values = [data.user_id, data.creation_name, data.politics_id, data.tier_number_array, JSON.stringify(data.tier_name_array)];
     dbClient.query(SQL, values).then(()=>{
       response.status(204).send();
     }).catch(error => {

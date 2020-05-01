@@ -3,7 +3,7 @@
 // DEPENDENCIES
 require('dotenv').config();
 const pg = require('pg');
-const methodOverride = require('method-override');
+// const methodOverride = require('method-override');
 const dbClient = new pg.Client(process.env.DATABASE_URL);
 
 // DEPENDENCY INTEGRATION

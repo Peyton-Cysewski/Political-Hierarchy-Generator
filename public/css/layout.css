@@ -7,8 +7,8 @@ header {
 
 header h1 {
     padding-bottom: 20px;
-    font-size: xx-large;
-    text-shadow: 0 0 3px rgb(231, 235, 161), 0 0 5px #0000FF;
+    font-size: 60px;
+    text-shadow: 10px 10px 10px rgb(0, 0, 0), 10px 10px 10px rgb(85, 83, 83);
     color:white;
 }
 
@@ -18,8 +18,14 @@ header nav ul {
 
 header nav ul li {
     width: 33.3333%;
-    text-shadow: 0 0 3px rgb(231, 235, 161), 0 0 5px #0000FF;
 
+}
+
+header nav ul li a {
+    text-shadow: 6px 6px 6px rgb(0, 0, 0), 6px 6px 6px rgb(225, 14, 14);
+    color:white;
+    font-size: x-large;
+    text-decoration: none;
 }
 
 /* Footer */
@@ -27,7 +33,7 @@ footer {
     text-align: center;
     /* background-color: lightgray; */
     padding: 20px 0;
-    text-shadow: 0 0 3px rgb(255, 14, 14), 0 0 5px #0000FF;
+    text-shadow: 6px 6px 6px rgb(0, 0, 0), 6px 6px 6px rgb(225, 14, 14);
 
 }
 
@@ -39,9 +45,29 @@ footer ul li {
     width: 33.3333%;
 }
 
-form h1{
-    text-shadow: 0 0 3px rgb(255, 14, 14), 0 0 5px #0000FF;
+main h1{
+    text-shadow: 6px 6px 6px rgb(0, 0, 0), 6px 6px 6px rgb(225, 14, 14);
+    margin-bottom: 10px;
+    font-size: x-large;
+    text-align: center;
+    font-weight: bolder;
+}
+form label{
+    text-shadow: 6px 6px 6px rgb(0, 0, 0), 6px 6px 6px rgb(225, 14, 14);
 
+
+}
+form input{
+    margin: 10px;
+    
+}
+form button{
+    text-shadow: 6px 6px 6px rgb(0, 0, 0), 6px 6px 6px rgb(225, 14, 14);
+    font-family: 'Satisfy', cursive;
+    font-size: large;
+    background: none;
+    border: none;
+    color:white;
 }
 /* Index Main */
 
@@ -66,6 +92,7 @@ form h1{
 #creationNameInput {
     text-align: center;;
     width: 246px;
+    margin:0;
 }
 
 .hiddenInput {
@@ -164,6 +191,7 @@ form h1{
     margin-top: 10px;
     background-color: whitesmoke;
 }
+
 
 body main form button img {
 	border-radius: 45%;

@@ -6,7 +6,10 @@
 ## Created By: Peng Chen, Matthew Stewart, Joe Lee, Robert Carter, Peyton Cysewski
 
 ## Change Log
-Version 1.0.0 - 4/27/2020 2:31pm - Set up file directory and began writing code
+Version 1.0.0 - 4/27/2020 - Set up file directory and began writing code
+Version 1.0.1 - 4/28/2020 - First day of coding, worked on the function of interacting with the API to make the hierarchy
+Version 1.0.2 - 4/29/2020 - Found a somewhat viable solution to allow low numbers of API requests
+Version 1.0.3 - 4/30/2020 - Got to MVP
 
 
 ### Description
