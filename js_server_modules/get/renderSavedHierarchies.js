@@ -14,12 +14,10 @@ dbClient.connect(error => {
 
 exports.renderSavedHierarchies = function(request, response) {
   let data = request.params.userdata.split('+');
-  console.log(data);
-  let SQL = 'SELECT creation_name, id FROM hierarchy WHERE user_id=$1;';
+  let SQL = 'SELECT creation_name, id, user_id FROM hierarchy WHERE user_id=$1;';
   let values = [data[0]];
   dbClient.query(SQL, values).then(dbRes => {
     let creationList = dbRes.rows;
-    console.log('creationList is ', creationList);
     response.render('savedHierarchies', { creationList: creationList, loggedIn: true, user_id: data[0], user_name: data[1] });
   }).catch(error => {
     console.log('Trouble finding user\'s saved hierarchies: ', error);

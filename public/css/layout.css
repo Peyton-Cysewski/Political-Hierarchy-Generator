@@ -200,3 +200,54 @@ body main form button img {
 .government_container{
     color:black;
 }
+
+.government_container h3 {
+    font-size: x-large;
+}
+
+#utility{
+    width: 195px;
+    margin-left:auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    border: thin black solid;
+    margin-top: 30px;
+
+}
+
+#creationsContainer li{
+    width: 33%;
+    margin-left:auto;
+    margin-right: auto;
+    text-align: center;
+    
+}
+
+#creationsContainer ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+#saveResult{
+    width:80px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+#saveResult img{
+    width:50px;
+}
+
+
+.deleteButton{
+    text-align: right;
+    display: inline;
+}
+
+.deleteButton button{
+    color:black;
+    display: inline;
+    margin-left: 30px;
+    text-shadow: none;
+}

@@ -10,16 +10,12 @@ const methodOverride = require('method-override');
 // const pg = require('pg');
 const cors = require('cors');
 const PORT = process.env.PORT;
-
-
-const FileSaver = require('file-saver');
-// var blob = new Blob(["Hello, world!"], {type: "text/plain;charset=utf-8"});
-// FileSaver.saveAs(blob, "hello world.txt");
-// FileSaver saveAs(Blob/File/Url, optional DOMString filename, optional Object { autoBom: true });
+const path = require('path');
 
 
 // DEPENDENCY INTEGRATION
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(cors());
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
@@ -49,8 +45,9 @@ const login = require('./js_server_modules/get/login.js');
 const saveHierarchy = require('./js_server_modules/post/saveHierarchy.js');
 const renderSavedHierarchies = require('./js_server_modules/get/renderSavedHierarchies.js');
 
-// const renderPaginatedHierarchies = require('./js_server_modules/get/renderPaginatedHierarchies.js');
+const renderPaginatedHierarchies = require('./js_server_modules/get/renderPaginatedHierarchies.js');
 
+const deleteSavedHierarchies = require('./js_server_modules/delete/deleteSavedHierarchies.js');
 
 // ALL ROUTES + CALLBACKS
 // **NOTE** - Callbacks need to be defined in module directories and imported directly above this section.
@@ -61,8 +58,8 @@ app.get('/home/:userdata', renderLoggedInHomePage.renderLoggedInHomePage);
 app.get('/login', login.login);// - logs the user in by checking to see if their username and password match, returning them to the page they were just at, either to the home page or the hierarchy they just created while logged out.
 app.get('/loginPage', renderLoginPage.renderLoginPage);// ROUTE WORKING, VIEW IN PROGRESS // - displays the login page with form for username and password; a link to create account is also visible.
 app.get('/createAccount', renderNewAccount.renderNewAccount);// ROUTE WORKING, VIEW IN PROGRESS // - displays a similar form to the login page; (Stretch: as the user puts in their username, checks database and denies it if it has already been taken, case sensitive).
-app.get('/saved/:userdata', renderSavedHierarchies.renderSavedHierarchies);// TODO // - displays a list of all the save-names of the hierarchies that user has ever created; (Stretch: can sort by name or by hidden id).
-// app.get('/paginatedSaved/:data', renderPaginatedHierarchies.renderPaginatedHierarchies);// TODO // - displays a hierarchy in the same format that the 'renderHierarchy' function shows, but with paging buttons that paginate through the list from the previous view.
+app.get('/saved/:userdata', renderSavedHierarchies.renderSavedHierarchies);//  // - displays a list of all the save-names of the hierarchies that user has ever created; (Stretch: can sort by name or by hidden id).
+app.get('/paginatedSaved/:data', renderPaginatedHierarchies.renderPaginatedHierarchies);//  // - displays a hierarchy in the same format that the 'renderHierarchy' function shows, but with paging buttons that paginate through the list from the previous view.
 
 // stretch goals
 // app.get('/accountSettings', renderAccountSettings);                  // TODO //
@@ -79,7 +76,7 @@ app.post('/save', saveHierarchy.saveHierarchy);// TODO // - saves the proper hie
 
 // DELETE
 // stretch goals for admin only
-// app.delete...
+app.delete('/deleteSaved/:userdata', deleteSavedHierarchies.deleteSavedHierarchies);
 
 
 app.listen(PORT, ()=>{

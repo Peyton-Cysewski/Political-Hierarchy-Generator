@@ -10,7 +10,12 @@
      <h1>Your Created Hierarchies</h1>
       <ul>
       <% for (let i = 0; i < creationList.length; i++) { %>
-        <li class="tier1"><a href="/paginatedSaved/<%= creationList[i].id %>+<%= user_name %>"><%= creationList[i].creation_name %></a></li>
+        <li class="tier1">
+          <a href="/paginatedSaved/<%= creationList[i].id %>+<%= user_name %>"><%= creationList[i].creation_name %></a>
+          <form class="deleteButton" action="/deleteSaved/<%= creationList[i].id %>+<%= user_id %>+<%=creationList[i].creation_name %>+ <%=user_name %>  ?_method=DELETE" method="POST">
+            <button type="submit">Remove</button>
+          </form>
+        </li>
       <% } %>
       </ul>
     </div>
