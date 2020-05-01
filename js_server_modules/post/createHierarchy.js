@@ -14,17 +14,17 @@ dbClient.connect(error => {
   }
 });
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
+// function sleep(milliseconds) {
+//   const date = Date.now();
+//   let currentDate = null;
+//   do {
+//     currentDate = Date.now();
+//   } while (currentDate - date < milliseconds);
+// }
 
-function errorHandler(error, request, response) {
-  response.status(500).send('Something went wrong: ' + error);
-}
+// function errorHandler(error, request, response) {
+//   response.status(500).send('Something went wrong: ' + error);
+// }
 
 function determineGender(request) {
   let gender = '';
